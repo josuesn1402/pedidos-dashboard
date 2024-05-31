@@ -1,82 +1,116 @@
--- Eliminar la base de datos si existe
-DROP DATABASE IF EXISTS dashboardDB;
+-- Eliminar la base de datos si ya existe
+DROP DATABASE IF EXISTS db_pedidos;
 
--- Crear base de datos
-CREATE DATABASE dashboardDB;
-USE dashboardDB;
+-- Crear la base de datos
+CREATE DATABASE db_pedidos;
 
--- Crear tabla de cargos
-CREATE TABLE IF NOT EXISTS cargos (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  cargo VARCHAR(100) NOT NULL
-);
+USE db_pedidos;
 
--- Crear tabla de empleados
-CREATE TABLE IF NOT EXISTS empleados (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(100) NOT NULL,
-  apellido VARCHAR(100) NOT NULL,
-  cargo_id INT,
-  email VARCHAR(100) NOT NULL,
-  telefono VARCHAR(9),
-  fecha_contratacion DATE,
-  FOREIGN KEY (cargo_id) REFERENCES cargos(id)
-);
+-- Crear tabla Cliente
+CREATE TABLE
+  Cliente (
+    IdCliente CHAR(6) NOT NULL,
+    NomCliente VARCHAR(50) NOT NULL,
+    RUC CHAR(11) NOT NULL,
+    DirCliente VARCHAR(60) NOT NULL,
+    TelCliente VARCHAR(20) NULL,
+    Clave VARCHAR(10) NULL,
+    PRIMARY KEY (IdCliente)
+  );
 
--- Crear tabla de usuarios
-CREATE TABLE IF NOT EXISTS users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  empleado_id INT,
-  username VARCHAR(50) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  rol VARCHAR(50) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  FOREIGN KEY (empleado_id) REFERENCES empleados(id)
-);
+-- Crear tabla Documento
+CREATE TABLE
+  Documento (
+    IdDocumento TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    NomDocumento VARCHAR(20) NULL,
+    Serie TINYINT UNSIGNED NOT NULL,
+    ConDocumento INT NOT NULL,
+    PRIMARY KEY (IdDocumento)
+  );
 
--- Crear tabla de asistencia
-CREATE TABLE IF NOT EXISTS asistencia (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  empleado_id INT,
-  fecha DATE NOT NULL,
-  hora_entrada TIME NOT NULL,
-  hora_salida TIME,
-  FOREIGN KEY (empleado_id) REFERENCES empleados(id)
-);
+-- Crear tabla Empleado
+CREATE TABLE
+  Empleado (
+    IdEmpleado CHAR(6) NOT NULL,
+    ApeEmpleado VARCHAR(30) NOT NULL,
+    NomEmpleado VARCHAR(30) NOT NULL,
+    DirEmpleado VARCHAR(60) NULL,
+    TelEmpleado VARCHAR(20) NULL,
+    Clave VARCHAR(10) NOT NULL,
+    PRIMARY KEY (IdEmpleado)
+  );
 
--- Insertar datos de ejemplo en la tabla de cargos
-INSERT INTO cargos (cargo) VALUES
-('cirujano'),
-('odontologo'),
-('farmacia'),
-('limpieza'),
-('enfermera');
+-- Crear tabla Categoria
+CREATE TABLE
+  Categoria (
+    IdCategoria TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    NomCategoria VARCHAR(25) NOT NULL,
+    Prefijo CHAR(3) NOT NULL,
+    ConCategoria INT NOT NULL,
+    PRIMARY KEY (IdCategoria)
+  );
 
--- Insertar datos de ejemplo en la tabla de empleados
-INSERT INTO empleados (nombre, apellido, cargo_id, email, telefono, fecha_contratacion) VALUES
-('Juan', 'Perez', 1, 'juan.perez@example.com', '123456789', '2022-01-15'),
-('Maria', 'Gomez', 2, 'maria.gomez@example.com', '987654321', '2022-02-20'),
-('Carlos', 'Lopez', 3, 'carlos.lopez@example.com', '567890123', '2022-03-30'),
-('Ana', 'Martinez', 4, 'ana.martinez@example.com', '345678901', '2022-04-10'),
-('Luisa', 'Fernandez', 5, 'luisa.fernandez@example.com', '456789012', '2022-05-05');
+-- Crear tabla Articulo
+CREATE TABLE
+  Articulo (
+    IdArticulo CHAR(8) NOT NULL,
+    IdCategoria TINYINT UNSIGNED NOT NULL,
+    NomArticulo VARCHAR(50) NOT NULL,
+    PreArticulo NUMERIC(10, 2) NOT NULL,
+    stock INT NOT NULL,
+    PRIMARY KEY (IdArticulo),
+    FOREIGN KEY (IdCategoria) REFERENCES Categoria (IdCategoria)
+  );
 
--- Insertar datos de ejemplo en la tabla de usuarios
-INSERT INTO users (empleado_id, username, password, rol, email) VALUES
-(1, 'jperez', '12345', 'admin', 'juan.perez@example.com'),
-(2, 'mgomez', '12345', 'user', 'maria.gomez@example.com'),
-(3, 'clopez', '12345', 'user', 'carlos.lopez@example.com'),
-(4, 'amartinez', '12345', 'user', 'ana.martinez@example.com'),
-(5, 'lfernandez', '12345', 'user', 'luisa.fernandez@example.com');
+-- Crear tabla Pedido
+CREATE TABLE
+  Pedido (
+    IdPedido INT NOT NULL,
+    IdDocumento TINYINT UNSIGNED NOT NULL,
+    IdEmpleado CHAR(6) NOT NULL,
+    NumDocumento VARCHAR(15) NOT NULL,
+    Fecha DATETIME NOT NULL,
+    IdCliente CHAR(6) NOT NULL,
+    Importe NUMERIC(10, 2) NOT NULL,
+    Subtotal NUMERIC(10, 2) NOT NULL,
+    Descuento NUMERIC(10, 2) NULL,
+    IGV NUMERIC(10, 2) NOT NULL,
+    Total NUMERIC(10, 2) NOT NULL,
+    Delivery TINYINT UNSIGNED NOT NULL,
+    Estado TINYINT UNSIGNED NOT NULL,
+    PRIMARY KEY (IdPedido),
+    FOREIGN KEY (IdDocumento) REFERENCES Documento (IdDocumento),
+    FOREIGN KEY (IdEmpleado) REFERENCES Empleado (IdEmpleado),
+    FOREIGN KEY (IdCliente) REFERENCES Cliente (IdCliente)
+  );
 
--- Insertar datos de ejemplo en la tabla de asistencia
-INSERT INTO asistencia (empleado_id, fecha, hora_entrada, hora_salida) VALUES
-(1, '2023-05-01', '08:00:00', '17:00:00'),
-(2, '2023-05-01', '09:00:00', '18:00:00'),
-(3, '2023-05-01', '07:00:00', '16:00:00'),
-(4, '2023-05-01', '08:30:00', '17:30:00'),
-(5, '2023-05-01', '09:00:00', '18:00:00');
+-- Crear tabla DetallePedido
+CREATE TABLE
+  DetallePedido (
+    IdPedido INT NOT NULL,
+    IdArticulo CHAR(8) NOT NULL,
+    Cantidad SMALLINT UNSIGNED NOT NULL,
+    PreVenta NUMERIC(10, 2) NOT NULL,
+    SubTotal NUMERIC(10, 2) NOT NULL,
+    PRIMARY KEY (IdPedido, IdArticulo),
+    FOREIGN KEY (IdPedido) REFERENCES Pedido (IdPedido),
+    FOREIGN KEY (IdArticulo) REFERENCES Articulo (IdArticulo)
+  );
 
-SELECT * FROM cargos;
-SELECT * FROM empleados;
-SELECT * FROM users;
-SELECT * FROM asistencia;
+-- Crear tabla Promocion
+CREATE TABLE
+  Promocion (
+    IdPromocion TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    MontoMin NUMERIC(10, 2) NOT NULL,
+    MontoMax NUMERIC(10, 2) NOT NULL,
+    Porcentaje TINYINT UNSIGNED NOT NULL,
+    PRIMARY KEY (IdPromocion)
+  );
+
+-- Crear tabla Parametro
+CREATE TABLE
+  Parametro (
+    Campo VARCHAR(20) NOT NULL,
+    Valor VARCHAR(20) NOT NULL,
+    PRIMARY KEY (Campo)
+  );

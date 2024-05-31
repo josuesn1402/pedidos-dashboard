@@ -53,7 +53,7 @@ END $$
 -- Procedimiento para seleccionar todos los pedidos
 CREATE PROCEDURE SeleccionarPedidos()
 BEGIN
-  SELECT * FROM Pedido;
+  SELECT IdPedido, IdDocumento, IdEmpleado, NumDocumento, Fecha, Importe, Estado FROM Pedido;
 END $$
 
 -- Procedimiento para insertar un nuevo pedido

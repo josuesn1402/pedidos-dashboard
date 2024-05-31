@@ -1,0 +1,56 @@
+// Estilos para el formulario de solicitud de pedido
+
+$h2-color: #333;
+$form-background: #f9f9f9;
+$input-background: #fff;
+$button-color: #fff;
+$button-background: #007bff;
+$button-hover-background: #0056b3;
+
+.form {
+  // max-width: 400px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: $h2-color;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+form {
+  background-color: $form-background;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: $input-background;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: $button-background;
+  color: $button-color;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $button-hover-background;
+  }
+}

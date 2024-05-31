@@ -1,9 +1,11 @@
 @import "abstracts/variables";
 @import "base/reset";
 @import "base/base";
+@import "abstracts/mixins";
 @import "components/header";
 @import "components/navbar";
 @import "components/sidebar";
 @import "components/footer";
 @import "layout/login";
 @import "layout/dashboard";
+@import "layout/form";

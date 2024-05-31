@@ -114,3 +114,12 @@ CREATE TABLE
     Valor VARCHAR(20) NOT NULL,
     PRIMARY KEY (Campo)
   );
+
+-- Crear tabla Usuario
+CREATE TABLE
+  Usuario (
+    IdUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    NomUsuario VARCHAR(50) NOT NULL,
+    Correo VARCHAR(50) NOT NULL,
+    Clave VARCHAR(10) NOT NULL
+  );

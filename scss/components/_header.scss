@@ -10,18 +10,25 @@ header {
 .header-left {
   display: flex;
   align-items: center;
+
+  h1 {
+    color: var(--color-light);
+    margin-left: 1.3rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
 }
 
 #toggleSidebar {
-  font-size: 24px;
+  font-size: 2rem;
   color: #fff;
   border: none;
   background: none;
   cursor: pointer;
 
   img {
-    width: 45px;
-    height: 45px;
+    width: 2rem;
+    height: 2rem;
   }
 }
 

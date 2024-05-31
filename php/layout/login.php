@@ -18,7 +18,7 @@ session_destroy();
   <div class="login-container">
     <div class="login-left">
       <div class="illustration">
-        <img src="../../assets/svg/undraw_secure_login.svg" alt="Illustration">
+        <img src="../../assets/svg/undraw_security_re_a2rk.svg" alt="Illustration">
       </div>
       <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>

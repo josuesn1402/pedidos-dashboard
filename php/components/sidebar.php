@@ -1,19 +1,13 @@
 <div class="sidebar">
   <ul>
     <li class="active">
-      <a href="#" data-section="cargos" class="sidebar-link">Cargos</a>
+      <a href="#" data-section="registrar" class="sidebar-link">Registrar</a>
     </li>
     <li>
-      <a href="#" data-section="empleados" class="sidebar-link">Empleados</a>
+      <a href="#" data-section="listar" class="sidebar-link">Listar</a>
     </li>
     <li>
-      <a href="#" data-section="usuarios" class="sidebar-link">Usuarios</a>
-    </li>
-    <li>
-      <a href="#" data-section="asistencia" class="sidebar-link">Asistencia</a>
-    </li>
-    <li>
-      <a href="#" data-section="acerca" class="sidebar-link">Acerca de</a>
+      <a href="#" data-section="modificar" class="sidebar-link">Modificar</a>
     </li>
     <li>
       <a href="#" id="logoutLink" class="sidebar-link">Cerrar Sesión</a>

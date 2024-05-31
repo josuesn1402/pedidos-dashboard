@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	function loadSection(section) {
-		fetch(`../layout/${section}.php`)
+		fetch(`${section}.php`)
 			.then((response) => response.text())
 			.then((data) => {
 				contentArea.innerHTML = data;
@@ -41,6 +41,5 @@ document.addEventListener("DOMContentLoaded", function () {
 		window.location.href = "../controllers/logout.php";
 	});
 
-	// Load the initial section (Cargos) by default
-	loadSection("cargos");
+	loadSection("registrar");
 });

@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
-$database = "dashboardDB";
+$password = "admin";
+$database = "db_pedidos";
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $database);

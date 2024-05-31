@@ -269,3 +269,10 @@ VALUES
   ('DIAS_ENTREGA', '5'),
   ('HORARIO_ATENCION', '09:00-18:00'),
   ('MONEDA', 'USD');
+
+INSERT INTO
+  Usuario (NomUsuario, Correo, Clave)
+VALUES
+  ('user1', 'usuario1@example.com', '1234'),
+  ('user2', 'usuario2@example.com', '1234'),
+  ('user3', 'usuario3@example.com', '1234');

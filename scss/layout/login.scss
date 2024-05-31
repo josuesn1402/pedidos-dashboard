@@ -1,0 +1,126 @@
+/* Login Page Styles */
+.login-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.login-left,
+.login-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-left {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  color: var(--color-light);
+  padding: var(--spacing-medium);
+}
+
+.login-left .illustration img {
+  max-width: 80%;
+  height: auto;
+}
+
+.login-left .description {
+  margin-top: var(--spacing-medium);
+  font-size: var(--font-size-small);
+  text-align: center;
+}
+
+.login-right {
+  background-color: var(--color-light);
+  padding: var(--spacing-large);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.login-right h2 {
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-medium);
+}
+
+.login-right form {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-right form h3 {
+  margin-bottom: var(--spacing-medium);
+  color: var(--color-dark);
+}
+
+.login-right label {
+  margin-bottom: var(--spacing-small);
+  color: var(--color-gray);
+}
+
+.login-right input {
+  margin-bottom: var(--spacing-medium);
+  padding: var(--spacing-small);
+  border: 1px solid var(--color-light);
+  border-radius: 5px;
+}
+
+.login-right button {
+  padding: var(--spacing-small) var(--spacing-medium);
+  background-color: var(--color-accent);
+  color: var(--color-light);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-right button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.login-right .links {
+  margin-top: var(--spacing-medium);
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+    padding: var(--spacing-medium);
+  }
+}
+
+@media (max-width: 480px) {
+  .login-right {
+    padding: var(--spacing-medium);
+  }
+
+  .login-right form {
+    width: 100%;
+  }
+
+  .login-right button {
+    width: 100%;
+  }
+
+  .login-right .links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-right .links a {
+    margin-top: var(--spacing-small);
+  }
+}

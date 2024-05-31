@@ -1,0 +1,49 @@
+/* Estilos para el header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+#toggleSidebar {
+  font-size: 24px;
+  color: #fff;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-right: 10px;
+    color: #fff;
+    font-weight: bold;
+  }
+  img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 5px;
+
+    &:last-child {
+      width: 30px;
+      height: 45px;
+      margin-right: 0;
+    }
+  }
+}

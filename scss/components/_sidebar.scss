@@ -1,0 +1,43 @@
+.sidebar {
+  display: block;
+  background-color: #1f2d3a;
+  color: white;
+  height: 100vh;
+  top: 0;
+  left: -300px;
+  transition: left 0.3s ease;
+  padding-top: 20px;
+}
+
+.sidebar.show-sidebar {
+  display: none;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: white;
+  display: block;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background-color: #0083e0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+}

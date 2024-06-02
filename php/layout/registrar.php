@@ -61,36 +61,38 @@ mysqli_close($conn);
       <input type="text" id="importe" name="importe">
     </div>
 
+    <!-- Campos para mostrar los cálculos -->
     <div class="form-group">
       <label for="subtotal">Subtotal:</label>
-      <input type="text" id="subtotal" name="subtotal">
+      <input type="text" id="subtotal" name="subtotal" readonly>
     </div>
 
     <div class="form-group">
       <label for="descuento">Descuento:</label>
-      <input type="text" id="descuento" name="descuento">
+      <input type="text" id="descuento" name="descuento" readonly>
     </div>
 
     <div class="form-group">
       <label for="igv">IGV:</label>
-      <input type="text" id="igv" name="igv">
+      <input type="text" id="igv" name="igv" readonly>
     </div>
 
     <div class="form-group">
       <label for="total">Total:</label>
-      <input type="text" id="total" name="total">
+      <input type="text" id="total" name="total" readonly>
     </div>
 
     <div class="form-group checkbox">
-      <label>Delivery:</label>
+      <label>&nbsp;</label>
       <div>
-        <input type="radio" id="si" name="delivery" value="1">
-        <label for="si">Sí</label>
+        <input type="checkbox" id="si" name="delivery" value="1">
+        <label for="delivery">Delivery</label>
       </div>
-      <div>
-        <input type="radio" id="no" name="delivery" value="0">
-        <label for="no">No</label>
-      </div>
+    </div>
+
+    <!-- Agregamos un botón de "Calcular" -->
+    <div class="form-group">
+      <button type="button" onclick="calcular()">Calcular</button>
     </div>
 
     <div class="form-group">
@@ -98,3 +100,18 @@ mysqli_close($conn);
     </div>
   </form>
 </div>
+
+<script>
+  function calcular() {
+    const importe = document.getElementById('importe').value;
+    const subtotal = importe * 0.9; // Suponiendo un descuento del 10%
+    const descuento = importe - subtotal;
+    const igv = subtotal * 0.18; // Suponiendo un IGV del 18%
+    const total = subtotal + igv;
+
+    document.getElementById('subtotal').value = subtotal.toFixed(2);
+    document.getElementById('descuento').value = descuento.toFixed(2);
+    document.getElementById('igv').value = igv.toFixed(2);
+    document.getElementById('total').value = total.toFixed(2);
+  }
+</script>

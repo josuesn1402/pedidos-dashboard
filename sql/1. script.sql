@@ -63,9 +63,8 @@ CREATE TABLE
   );
 
 -- Crear tabla Pedido
-CREATE TABLE
-  Pedido (
-    IdPedido INT NOT NULL,
+CREATE TABLE Pedido (
+    IdPedido INT AUTO_INCREMENT PRIMARY KEY,
     IdDocumento TINYINT UNSIGNED NOT NULL,
     IdEmpleado CHAR(6) NOT NULL,
     NumDocumento VARCHAR(15) NOT NULL,
@@ -78,11 +77,10 @@ CREATE TABLE
     Total NUMERIC(10, 2) NOT NULL,
     Delivery TINYINT UNSIGNED NOT NULL,
     Estado TINYINT UNSIGNED NOT NULL,
-    PRIMARY KEY (IdPedido),
     FOREIGN KEY (IdDocumento) REFERENCES Documento (IdDocumento),
     FOREIGN KEY (IdEmpleado) REFERENCES Empleado (IdEmpleado),
     FOREIGN KEY (IdCliente) REFERENCES Cliente (IdCliente)
-  );
+);
 
 -- Crear tabla DetallePedido
 CREATE TABLE

@@ -4,7 +4,7 @@
 <div class="main-content">
   <?php include('../components/sidebar.php'); ?>
   <div id="main-content-right" class="main-content-right">
-    <?php include('registrar.php'); ?>
+    <?php include('listar.php'); ?>
   </div>
 </div>
 

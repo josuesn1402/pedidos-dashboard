@@ -53,7 +53,31 @@ END $$
 -- Procedimiento para seleccionar todos los pedidos
 CREATE PROCEDURE SeleccionarPedidos()
 BEGIN
-  SELECT IdPedido, IdDocumento, IdEmpleado, NumDocumento, Fecha, Importe, Estado FROM Pedido;
+  SELECT 
+    p.IdPedido, 
+    p.IdDocumento,
+    d.NomDocumento AS Documento, 
+    p.IdEmpleado,
+    CONCAT(e.NomEmpleado, ' ', e.ApeEmpleado) AS Empleado, 
+    p.NumDocumento, 
+    p.Fecha, 
+    c.NomCliente AS Cliente, 
+    p.Importe, 
+    p.Subtotal, 
+    p.Descuento,
+    p.IGV, 
+    p.Total, 
+    p.Delivery AS DeliveryValue, 
+    CASE p.Delivery
+      WHEN 1 THEN 'SI'
+      ELSE 'NO'
+    END AS Delivery,
+    p.Estado 
+  FROM Pedido p
+  INNER JOIN Documento d ON p.IdDocumento = d.IdDocumento
+  INNER JOIN Empleado e ON p.IdEmpleado = e.IdEmpleado
+  INNER JOIN Cliente c ON p.IdCliente = c.IdCliente
+  ORDER BY p.IdPedido;
 END $$
 
 -- Procedimiento para insertar un nuevo pedido

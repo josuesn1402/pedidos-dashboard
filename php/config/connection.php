@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "admin";
+$password = "";
 $database = "db_pedidos";
 
 // Crear la conexión

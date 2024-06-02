@@ -41,5 +41,5 @@ document.addEventListener("DOMContentLoaded", function () {
 		window.location.href = "../controllers/logout.php";
 	});
 
-	loadSection("registrar");
+	loadSection("listar");
 });

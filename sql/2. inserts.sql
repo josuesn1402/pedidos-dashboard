@@ -57,10 +57,7 @@ INSERT INTO
   Documento (NomDocumento, Serie, ConDocumento)
 VALUES
   ('Factura', 1, 1001),
-  ('Boleta', 2, 1002),
-  ('Nota de Crédito', 3, 1003),
-  ('Nota de Débito', 4, 1004),
-  ('Guía de Remisión', 5, 1005);
+  ('Boleta', 2, 1002);
 
 -- Insertar datos en la tabla Empleado
 INSERT INTO
@@ -190,7 +187,7 @@ VALUES
   ),
   (
     3,
-    3,
+    2,
     'E00003',
     '0003',
     '2023-01-03 12:00:00',
@@ -205,7 +202,7 @@ VALUES
   ),
   (
     4,
-    4,
+    1,
     'E00004',
     '0004',
     '2023-01-04 13:00:00',
@@ -220,7 +217,7 @@ VALUES
   ),
   (
     5,
-    5,
+    1,
     'E00005',
     '0005',
     '2023-01-05 14:00:00',

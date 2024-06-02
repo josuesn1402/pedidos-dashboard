@@ -1,6 +1,6 @@
 <div class="sidebar">
-  <ul>
-    <li class="active">
+  <ul class="sidebar-menu">
+    <li>
       <a href="#" data-section="listar" class="sidebar-link">Listar</a>
     </li>
     <li>

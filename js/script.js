@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const sidebar = document.querySelector(".sidebar");
 	const mainContent = document.querySelector(".main-content");
 	const links = document.querySelectorAll(".sidebar-link");
-	const contentArea = document.getElementById("main-content-right");
+	const sections = document.querySelectorAll(".section-content");
 	const logoutLink = document.getElementById("logoutLink");
 
 	// Toggle sidebar visibility
@@ -12,34 +12,34 @@ document.addEventListener("DOMContentLoaded", function () {
 		mainContent.classList.toggle("show");
 	});
 
-	// Load section content dynamically
+	// Add click event to sidebar links
 	links.forEach((link) => {
 		link.addEventListener("click", function (event) {
 			event.preventDefault();
-			const section = this.getAttribute("data-section");
-			if (section) {
-				loadSection(section);
-				// Add "active" class to the clicked link's parent <li> and remove from others
-				links.forEach((l) => l.parentElement.classList.remove("active"));
-				this.parentElement.classList.add("active");
+			const sectionToShow = this.getAttribute("data-section");
+
+			// Hide all sections
+			sections.forEach((section) => {
+				section.style.display = "none";
+			});
+
+			// Show the selected section
+			const sectionElement = document.getElementById(
+				`section-${sectionToShow}`
+			);
+			if (sectionElement) {
+				sectionElement.style.display = "block";
 			}
+
+			// Add "active" class to the clicked link's parent <li> and remove from others
+			links.forEach((l) => l.parentElement.classList.remove("active"));
+			this.parentElement.classList.add("active");
 		});
 	});
-
-	function loadSection(section) {
-		fetch(`${section}.php`)
-			.then((response) => response.text())
-			.then((data) => {
-				contentArea.innerHTML = data;
-			})
-			.catch((error) => console.error("Error al cargar los datos:", error));
-	}
 
 	// Handle logout
 	logoutLink.addEventListener("click", function (event) {
 		event.preventDefault();
 		window.location.href = "../controllers/logout.php";
 	});
-
-	loadSection("listar");
 });

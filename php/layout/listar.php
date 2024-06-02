@@ -7,7 +7,7 @@ $result = mysqli_query($conn, $query);
 if ($result && mysqli_num_rows($result) > 0) {
   ?>
   <h2 class="nunito">LISTA DE PEDIDOS</h2>
-  <button class="register-btn">+ Registrar</button>
+  <button id="registrar-btn" class="register-btn">+ Registrar</button>
   <table id="data-table">
     <thead>
       <tr>
@@ -31,18 +31,18 @@ if ($result && mysqli_num_rows($result) > 0) {
       while ($row = mysqli_fetch_assoc($result)):
         ?>
         <tr>
-          <td><?= $row['IdPedido'] ?></td>
-          <td><?= $row['Documento'] ?></td>
-          <td><?= $row['Empleado'] ?></td>
-          <td><?= $row['NumDocumento'] ?></td>
-          <td><?= $row['Fecha'] ?></td>
-          <td><?= $row['Cliente'] ?></td>
-          <td><?= $row['Importe'] ?></td>
-          <td><?= $row['Descuento'] ?></td>
-          <td><?= $row['Subtotal'] ?></td>
-          <td><?= $row['IGV'] ?></td>
-          <td><?= $row['Total'] ?></td>
-          <td><?= $row['Delivery'] ?></td>
+          <td><?= htmlspecialchars($row['IdPedido']) ?></td>
+          <td><?= htmlspecialchars($row['Documento']) ?></td>
+          <td><?= htmlspecialchars($row['Empleado']) ?></td>
+          <td><?= htmlspecialchars($row['NumDocumento']) ?></td>
+          <td><?= htmlspecialchars($row['Fecha']) ?></td>
+          <td><?= htmlspecialchars($row['Cliente']) ?></td>
+          <td><?= htmlspecialchars($row['Importe']) ?></td>
+          <td><?= htmlspecialchars($row['Descuento']) ?></td>
+          <td><?= htmlspecialchars($row['Subtotal']) ?></td>
+          <td><?= htmlspecialchars($row['IGV']) ?></td>
+          <td><?= htmlspecialchars($row['Total']) ?></td>
+          <td><?= htmlspecialchars($row['Delivery']) ?></td>
           <td class="col-acciones">
             <button class="edit-btn">
               <img src="../../assets/svg/edit.svg" alt="Editar">
@@ -63,7 +63,6 @@ if ($result && mysqli_num_rows($result) > 0) {
   <p>No se encontraron registros.</p>
   <?php
 }
-
 mysqli_free_result($result);
 mysqli_close($conn);
 ?>

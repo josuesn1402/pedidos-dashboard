@@ -11,11 +11,13 @@ $sqlClientes = "SELECT IdCliente, NomCliente FROM Cliente";
 $resultClientes = mysqli_query($conn, $sqlClientes);
 
 mysqli_close($conn);
+
+include ('../controllers/registroCtrl.php');
 ?>
 
 <div class="form">
   <h2 class="nunito">Solicitud de Pedido</h2>
-  <form action="../controllers/registroCtrl.php" method="POST" class="form-grid">
+  <form action="" method="POST" class="form-grid">
     <div class="form-group">
       <label for="tipoDocumento">Tipo de Documento:</label>
       <select id="tipoDocumento" name="tipoDocumento">

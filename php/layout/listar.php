@@ -48,8 +48,9 @@ if ($result && mysqli_num_rows($result) > 0) {
               <img src="../../assets/svg/edit.svg" alt="Editar">
             </button>
             <button class="delete-btn">
-              <img src="../../assets/svg/delete.svg" alt="Eliminar">
-            </button>
+              <a href="../controllers/eliminarPedidoCtrl.php?id=<?php echo $row['IdPedido']; ?>">
+                <img src="../../assets/svg/delete.svg" alt="Eliminar">
+              </a></button>
           </td>
         </tr>
         <?php

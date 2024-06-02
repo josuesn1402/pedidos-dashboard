@@ -65,6 +65,7 @@ table tbody tr:nth-child(odd) {
 
 .edit-btn,
 .delete-btn {
+	display: inline-block;
 	padding: 5px 10px;
 	border: none;
 	border-radius: 5px;

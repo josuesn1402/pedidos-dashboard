@@ -20,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             VALUES ('$idDocumento', '$idEmpleado', '$numDocumento', '$fecha', '$idCliente', '$importe', '$subtotal', '$descuento', '$igv', '$total', '$delivery', '$estado')";
 
   if (mysqli_query($conn, $query)) {
+    header("Location:../layout/dashboard.php");
+    exit();
   } else {
     echo "Error al registrar el pedido: " . mysqli_error($conn);
   }

@@ -44,7 +44,7 @@ if ($result && mysqli_num_rows($result) > 0) {
           <td><?= htmlspecialchars($row['Total']) ?></td>
           <td><?= htmlspecialchars($row['Delivery']) ?></td>
           <td class="col-acciones">
-            <button class="edit-btn">
+            <button class="edit-btn" data-pedido='<?= htmlspecialchars(json_encode($row)) ?>'>
               <img src="../../assets/svg/edit.svg" alt="Editar">
             </button>
             <button class="delete-btn">

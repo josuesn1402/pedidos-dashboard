@@ -29,7 +29,10 @@ END $$
 -- Procedimiento para seleccionar todos los empleados
 CREATE PROCEDURE SeleccionarEmpleados()
 BEGIN
-  SELECT * FROM Empleado;
+  SELECT
+    IdEmpleado, 
+    CONCAT(NomEmpleado, ' ', ApeEmpleado) AS Nombre
+    FROM Empleados;
 END $$
 
 -- Procedimiento para seleccionar todos los artículos
@@ -61,6 +64,7 @@ BEGIN
     CONCAT(e.NomEmpleado, ' ', e.ApeEmpleado) AS Empleado, 
     p.NumDocumento, 
     p.Fecha, 
+	p.IdCliente,
     c.NomCliente AS Cliente, 
     p.Importe, 
     p.Subtotal, 

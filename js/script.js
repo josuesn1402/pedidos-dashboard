@@ -60,9 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Actualizar la clase activa en la barra lateral
 		links.forEach((l) => l.parentElement.classList.remove("active"));
-		document
-			.querySelector('[data-section="registrar"]')
-			.parentElement.classList.add("active");
+		sidebar.querySelector('[data-section="registrar"]').classList.add("active");
 	});
 
 	// Cargar contenido de sección dinámicamente al hacer clic en el botón "Editar" en la tabla
@@ -79,24 +77,27 @@ document.addEventListener("DOMContentLoaded", function () {
 			sectionElement.style.display = "block";
 
 			// Llenar el formulario con los datos del pedido
-			formulario.querySelector('[name="idPedido"]').value = dataPedido.IdPedido;
-			formulario.querySelector('[name="tipoDocumento"]').value =
+			formulario.querySelector('[name="eIdPedido"]').value =
+				dataPedido.IdPedido;
+			formulario.querySelector('[name="eTipoDocumento"]').value =
 				dataPedido.IdDocumento;
-			formulario.querySelector('[name="codigoEmpleado"]').value =
+			formulario.querySelector('[name="eCodigoEmpleado"]').value =
 				dataPedido.IdEmpleado;
-			formulario.querySelector('[name="cliente"]').value = dataPedido.IdCliente;
-			formulario.querySelector('[name="fecha"]').value =
+			formulario.querySelector('[name="eCliente"]').value =
+				dataPedido.IdCliente;
+			formulario.querySelector('[name="eFecha"]').value =
 				dataPedido.Fecha.split(" ")[0];
-			formulario.querySelector('[name="numeroDocumento"]').value =
+			formulario.querySelector('[name="eNumeroDocumento"]').value =
 				dataPedido.NumDocumento;
-			formulario.querySelector('[name="importe"]').value = dataPedido.Importe;
-			formulario.querySelector('[name="descuento"]').value =
+			formulario.querySelector('[name="eImporte"]').value = dataPedido.Importe;
+			formulario.querySelector('[name="eDescuento"]').value =
 				dataPedido.Descuento;
-			formulario.querySelector('[name="subtotal"]').value = dataPedido.Subtotal;
-			formulario.querySelector('[name="total"]').value = dataPedido.Total;
-			formulario.querySelector('[name="igv"]').value = dataPedido.IGV;
+			formulario.querySelector('[name="eSubtotal"]').value =
+				dataPedido.Subtotal;
+			formulario.querySelector('[name="eTotal"]').value = dataPedido.Total;
+			formulario.querySelector('[name="eIgv"]').value = dataPedido.IGV;
 			const deliveryRadio = formulario.querySelector(
-				`[name="delivery"][value="${dataPedido.DeliveryValue}"]`
+				`[name="eDelivery"][value="${dataPedido.DeliveryValue}"]`
 			);
 			if (deliveryRadio) {
 				deliveryRadio.checked = true;
@@ -107,12 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
 				section.style.display = "none";
 			});
 			document.getElementById("section-modificar").style.display = "block";
-
-			// Actualizar la clase activa en el sidebar
-			links.forEach((l) => l.parentElement.classList.remove("active"));
-			document
-				.querySelector('[data-section="modificar"]')
-				.parentElement.classList.add("active");
 		});
 	});
 });

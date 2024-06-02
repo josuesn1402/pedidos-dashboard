@@ -61,7 +61,29 @@ if ($result && mysqli_num_rows($result) > 0) {
   <?php
 } else {
   ?>
-  <p>No se encontraron registros.</p>
+  <h2 class="nunito">LISTA DE PEDIDOS</h2>
+  <button id="registrar-btn" class="register-btn">+ Registrar</button>
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Documento</th>
+        <th>Empleado</th>
+        <th>N° Documento</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Importe</th>
+        <th>Descuento</th>
+        <th>Subtotal</th>
+        <th>IGV</th>
+        <th>Total</th>
+        <th>Delivery</th>
+        <th class="col-acciones">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
   <?php
 }
 mysqli_free_result($result);

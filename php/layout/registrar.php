@@ -146,11 +146,11 @@ mysqli_close($conn);
     })
       .then(response => response.text())
       .then(data => {
-        form.reset();
-        document.getElementById('subtotal').value = '';
-        document.getElementById('descuento').value = '';
-        document.getElementById('igv').value = '';
-        document.getElementById('total').value = '';
+        if (data.includes("Pedido registrado con éxito")) {
+          window.location.href = '../layout/dashboard.php';
+        } else {
+          alert(data);
+        }
       })
       .catch(error => {
         console.error('Error:', error);

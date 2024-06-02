@@ -31,9 +31,9 @@ session_destroy();
         <label for="password">Contraseña</label>
         <input type="password" id="password" name="password" required>
         <button type="submit">Iniciar sesión</button>
-        <div class="links">
+        <!-- <div class="links">
           <a href="#">Crear cuenta</a>
-        </div>
+        </div> -->
       </form>
     </div>
   </div>

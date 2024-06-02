@@ -1,5 +1,5 @@
 <div class="form">
-  <h2>Solicitud de Pedido</h2>
+  <h2 class="nunito">Solicitud de Pedido</h2>
   <form action="../controllers/registroCtrl.php" method="POST">
     <label for="documento">Documento:</label>
     <select id="documento" name="documento">

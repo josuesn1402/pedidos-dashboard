@@ -6,7 +6,7 @@ $result = mysqli_query($conn, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
   ?>
-  <h2>LISTA DE PEDIDOS</h2>
+  <h2 class="nunito">LISTA DE PEDIDOS</h2>
   <button class="register-btn">+ Registrar</button>
   <table id="data-table">
     <thead>
